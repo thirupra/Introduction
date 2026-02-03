@@ -1,0 +1,47 @@
+Video Telematics Project (TCU – Camera Based System) What the project is about “This project was about building firmware for a Telematics Control Unit 
+that can capture video when an incident happens in a vehicle — like harsh braking or sudden deceleration — and then upload only the relevant video to the cloud.
+ 
+” What you did “My role was mainly on the firmware and validation side. 
+ 
+I worked on the logic that connects sensor data and camera behavior.”
+ Designed firmware logic to process GPS, accelerometer, and camera data Implemented event detection logic based on accelerometer 
+hresholds Designed circular buffer logic so we always have video before and after an event Controlled when video recording starts,
+stops, and gets trimmed Validated firmware using simulated data streams before real hardware was available Debugged edge cases like low storage, 
+network failure, or missing sensor data Helped ensure camera firmware was stable under continuous operation How to close this answer “Overall, 
+I was responsible for making sure the incident detection and video capture logic worked reliably before moving to full hardware integration.” 
+
+
+
+
+
+
+I worked on a project called AAS – Audio Announcement Service. It’s a customer-specific embedded application deployed in places like railway stations and trains. The main purpose of the system is to receive announcement instructions from a central backend, download the required audio files securely, and play them at the correct time on the correct speakers through the local public address system.”
+“The device communicates with the backend using AMQP over a secure TLS connection with client certificates, so all communication is encrypted and authenticated. The backend sends us command messages called PDCC(Physical device command container). The most important ones are ANNOUT, which tells us to play an announcement, and ANNDEL, which cancels a previously scheduled announcement.”
+“An ANNOUT message contains details like which speaker group to use, the priority of the announcement, when it should start, when it must end, a unique ID, a hash for file verification, and an HTTPS URL to download the audio file. The audio itself is not sent in the message — only the link.”
+“When we receive an ANNOUT, the first thing we do is validate it — we check the format, confirm the URL is HTTPS, verify it hasn’t expired, and ensure the content type is correct. Then we download the audio file securely using mutual TLS, and verify the hash to ensure the file is not corrupted. After that, we store it in a local cache so we don’t download the same file repeatedly.”
+“Next, we schedule the playback based on priority, start time, and deadline. High-priority announcements can interrupt lower-priority ones. To play the audio, our service communicates with the local audio controller hardware called ELISA III-IP using a message-queue based IPC mechanism. We send a serialized control structure that includes priority, channel, timing, and the local file path. ELISA then plays the announcement and sends back a response code indicating success or specific hardware errors.”
+“Based on that response, we send status back to the central system using PPM monitoring messages — either an acknowledgment for success or detailed error codes if something failed.”
+“We also continuously monitor the health of the speaker lines. If any channel is defective, we report a DEGRADED state with the list of faulty channels. If everything is healthy, the state is RUNNING. If the entire device fails, we report FAULT.”
+“Security is a major part of the system. The device uses mutual TLS everywhere. Certificates are time-limited, so we automatically renew them. If a device has no valid certificate, we use a one-time token mechanism with device ID and pairing code to obtain a new one from the certificate service.”
+“Overall, the system is designed to be very robust. We implemented retries for network failures, de-duplication using sequence numbers, idempotent cancellation, detailed logging, and continuous monitoring. In short, AAS acts as the intelligent controller that ensures the right announcement plays at the right time on the right speakers, even when the network is unstable or some hardware components are partially failing.”
+
+
+
+
+ehicle Gateway Integration (Material Handling Equipment) What the project is about “This project involved integrating a gateway with forklifts to collect vehicle data and push it to the cloud for monitoring.” 
+Your role “I worked on the firmware and integration side.” Replaced an existing gateway with a cost-effective alternative Configured data templates and datasets for telemetry Enabled CAN and J1939 communication with vehicle display units Parsed CAN signals for diagnostics and monitoring Pushed processed data to cloud dashboards Natural explanation “Basically, my job was to make sure the gateway correctly understood vehicle data and reliably sent it to the cloud.”
+ 
+ 4️⃣ Fleet-Managed Robot System What the project is about “This was an industrial robot system where multiple robots were monitored and controlled remotely.” 
+Your role “I worked on the embedded firmware and cloud communication part.” Integrated AWS IoT for real-time monitoring Implemented LiDAR-based obstacle detection and path planning logic Handled UART communication between STM32 and Raspberry Pi Worked on telemetry, alerts, and system status reporting Debugged real-world issues like power fluctuations and sensor noise Simple wrap-up “My focus was to ensure stable communication between hardware, firmware, and the cloud.” 
+ 
+ 
+5️⃣ Android Automotive OS (AAOS) Integration What the project is about “This project was mainly for automotive infotainment testing, using low-cost hardware.” 
+Your role “I worked on bringing up AAOS on Raspberry Pi.” Built and deployed AOSP Integrated GPS via serial communication Debugged hardware communication issues 
+Ensured stable data flow between OS and peripherals 
+ 
+ 
+6️⃣ Post-Silicon Validation Projects (USB, SPI, I2C) What the project is about “These projects focused on validating communication protocols on real silicon.” 
+Your role “My responsibility was to make sure the silicon and firmware followed protocol specifications.” Validated USB enumeration and data transfer Verified SPI timing, 
+polarity, and noise behavior Tested I2C features like ACK/NACK, clock stretching, and multi-slave setups Used logic analyzers and oscilloscopes to debug failures Logged bugs 
+and helped with root-cause analysis 🎯 One-Line Summary You Can Use Anywhere “Across all my projects, my role has been to bring up hardware, validate silicon and protocols, 
+and build reliable embedded firmware and application logic that works in real-world conditions.”
