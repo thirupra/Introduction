@@ -1,0 +1,62 @@
+Introduction
+
+I specialize in designing and implementing software that runs on embedded systems, such as microcontrollers and other hardware platforms.
+My work involves low-level programming and hardware interface design to control and manage various hardware components led,7-seg lcd and 
+keypad matrix off-chip pheripherals like iic,spi,Usb 2.0 & SD Host controller3.0. As a firmware developer, I have experience in programming languages such as C and assembly language, 
+and I have a deep understanding of hardware architecture and system design. I have expertise in various firmware development tools,including debuggers, emulators, and simulation tools. 
+I work closely with hardware engineers to develop, test, and optimize firmware for various embedded systems. My responsibilities include designing and implementing firmware architecture, 
+creating and debugging code, and integrating software with hardware components. ROLES AND RESPONCIBILITY: Here my roles and responcibility are to understand spacification of the particular 
+ip features and according to that spacification need to develop the code to variefy it functionality before it releases to the excuition team after developing the code on simulator platforms 
+i will check it and sends the code to them.In this checking if i get any issues or any bug then i will debugg that issue by using my own debugging methodology,for that i will use debugging 
+tools gcc,gdb,t32,,,,etc,
+
+
+
+
+“I’m an Embedded Firmware and Validation Engineer with around 6+ years of experience working on microcontroller-based and Embedded Linux systems.
+I mostly work on STM32 platforms, where I handle board bring-up, peripheral driver development, protocol validation, and application-level firmware.
+I’ve worked on projects like video telematics systems, automatic announcement systems, vehicle gateway integration, and protocol validation for interfaces like I2C, SPI, UART, CAN, and USB.
+My role usually sits between hardware and software — I work closely with hardware teams during bring-up, validate silicon and boards using lab tools, and then build stable firmware on top of that.
+I enjoy debugging and validation work because that’s where you really understand how the system behaves in the real world, not just on paper.”
+
+
+
+
+How to Explain Board Bring-Up (Very Natural, Conversational)
+“So, whenever I get a new board — say a custom STM32-based board — I don’t rush to power it on.
+First, I do a visual inspection. I check for wrong component orientation, missing parts, or any obvious soldering issues. After that, I use a multimeter to make sure there are no shorts, 
+especially between power and ground.
+Once that looks fine, I power the board using a bench power supply with current limit, so even if something is wrong, the board is protected. Then I verify all the power rails — like 3.3V or 5V — 
+sing a multimeter or oscilloscope.
+After power, I check the clock and reset. I probe the crystal oscillator on the scope to see if it’s oscillating properly, and I confirm the reset line behaves correctly during startup.
+Once power and clock are stable, I connect a debugger like ST-Link and see if I can detect the MCU. If the debugger connects, that’s a good sign the board is alive.
+Then I flash a very basic firmware — usually an LED blink or a simple UART print. If I see the LED toggling or UART output, I know the core, clock, and basic peripherals are working. 
+From there, I slowly bring up other peripherals one by one.”
+
+
+
+
+
+
+How to Explain Post-Silicon Validation (Human Way)
+“Post-silicon validation is basically about making sure the real chip behaves the way it was designed to, once it comes out of fabrication.
+My job is to test the silicon on real hardware and catch issues that simulation might not show — things like timing problems, signal integrity issues, or corner-case failures.”
+
+
+
+What You Actually Do (Talk Like This):
+“First, I understand the IP or protocol specification, like USB, SPI, or I2C, and decide what all needs to be validated. Then I write test firmware or small validation applications to 
+exercise those features on real silicon.
+I use logic analyzers, oscilloscopes, and protocol decoders to verify timing, data integrity, and behavior under stress conditions — like voltage variation, noise, or high load.
+If I see an issue, I debug it by correlating firmware behavior with hardware signals. I capture waveforms, check registers, and narrow it down to whether it’s a firmware issue, a configuration issue, 
+or a silicon limitation. Once I identify the root cause, I log the issue clearly and work with the design or firmware teams to fix or work around it. After that, I rerun the tests to make sure the fix is solid.”
+
+
+
+
+How to Explain Your Responsibility (Clean & Professional)
+“My responsibility is to first understand the specification of a particular IP or peripheral, then develop firmware to verify its functionality.
+I validate the feature on simulators or real hardware, debug any issues using standard debugging tools, and make sure the code is stable before passing it to the execution or integration team.”
+
+
+
